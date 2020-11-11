@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Open+Sans:wght@300;400;700&display=swap");
+
+/* ========== GENERAL ========== */
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+	font-family: "Open Sans";
+}
+
+/* ========== NAVIGATION ========== */
+[class="navbar-brand"] {
+	font-family: "Fredericka the Great", "Open Sans";
+}
+
+/* ========== HEADER ========== */
+header {
+	min-height: 550px;
+	height: 100vh;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+	border-bottom: 1px solid black;
+}
+.layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+header h1 {
+	font-family: "Fredericka the Great", "Open Sans";
+	font-size: 3em;
+	color: black;
+	width: 100%;
+	text-align: center;
+	font-weight: 600;
+	position: absolute;
+	bottom: 47%;
+}
+
+/* ========== Main Content ========== */
+.border-div {
+	width: 60%;
+	margin: 30px auto;
+	border-bottom: 0.25px solid black;
+}
+
+/* ========== FOOTER ========== */
+footer {
+	background: #666;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	padding: 15px 30px 10px 50px;
+}
+.ft-left,
+.ft-right {
+	display: inline-block;
+	/* vertical-align: center; */
+}
+.ft-left {
+	width: 60%;
+}
+footer h3 {
+	font: normal 28px "Open Sans", cursive;
+}
+footer a {
+	color: #ffffff;
+}
+footer a:hover {
+	color: lightseagreen;
+}
+address > div {
+	display: inline-block;
+	font: bold 16px serif;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	width: fit-content;
+	width: -moz-fit-content;
+}
+.ft-icons {
+	margin: 15px 0 10px;
+	background-color: white;
+	width: fit-content;
+	width: -moz-fit-content;
+	border-radius: 3px;
+}
+.ft-icons a {
+	display: inline-block;
+	cursor: pointer;
+	font-size: 32px;
+	color: #666;
+	text-align: center;
+	line-height: 32px;
+	padding: 0;
+	margin: 3px 2px 0;
+}
+[class="fab fa-twitter"]:hover {
+	color: #1da1f2;
+}
+[class="fab fa-linkedin"]:hover {
+	color: #0e76a8;
+}
+[class="fab fa-github"]:hover {
+	color: #211f1f;
+}
+.ft-copyright {
+	color: #222;
+	width: 100%;
+	font-size: 15px;
+	font-weight: normal;
+	text-align: center;
+}
+.ft-right {
+	width: 35%;
+}
+.ft-about,
+.ft-credits {
+	line-height: 20px;
+	color: #92999f;
+	font-size: 16px;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+.ft-about span {
+	display: block;
+	color: #ffffff;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 25px 0 15px;
+}
+@media (max-width: 880px) {
+	footer {
+		font: bold 14px sans-serif;
+	}
+	footer .ft-left,
+	footer .ft-right {
+		display: block;
+		width: 100%;
+		margin-bottom: 25px;
+		text-align: center;
+	}
+	.ft-icons {
+		margin: 15px auto 10px;
+	}
+}
+
+button[type="submit"] {
+	margin-left: 53%;
+}
+[lang="ar"] {
+	direction: rtl;
+}
+/* =========================================================================== */
+/* footer h3 span {
+	color: lightseagreen;
+} */
+
+/* Footer links */
+
+/* footer .ft-links {
+	color: #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+footer .ft-links a {
+	display: inline-block;
+	line-height: 1.8;
+	font-weight: 400;
+	text-decoration: none;
+	color: inherit;
+} */
+/* If you don't want the footer to be responsive, remove these media queries */
+
+/* NAVIGATION */
+
+/* #navbar {
+	width: 100%;
+	position: fixed;
+	top: 1;
+	opacity: 0.3;
+	z-index: 99;
+}
+#navbar:hover {
+	opacity: 1;
+} */
+
+/* SLIDESHOW */
+/* .numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+.dot {
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+.active {
+	background-color: #717171;
+} */

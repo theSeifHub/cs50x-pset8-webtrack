@@ -1,0 +1,166 @@
+@import url("./main.css");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+/* Header Bg */
+.index-header {
+	background-image: url("../img/ahwa-setting-650.jpg");
+}
+/* Intro */
+.intro {
+	margin: 50px auto;
+	text-align: left;
+}
+.intro h2 {
+	font-family: Georgia, serif;
+	font-size: 2rem;
+	font-style: italic;
+	width: fit-content;
+	margin: 0.35em 70px;
+	color: #383838;
+	position: relative;
+}
+.intro q:before {
+	display: block;
+	padding-left: 10px;
+	content: "\201C";
+	font-size: 60px;
+	position: absolute;
+	left: -0.8em;
+	top: -15px;
+	color: #7a7a7a;
+}
+.intro q:after {
+	display: block;
+	padding-left: 10px;
+	content: "\201D";
+	font-size: 60px;
+	position: absolute;
+	right: -0.6em;
+	top: -15px;
+	color: #7a7a7a;
+}
+.intro p {
+	/* text-align: center; */
+	font-size: 1.3em;
+	padding: 30px 40px;
+}
+.border-div {
+	width: 60%;
+	margin: 25px auto 0;
+	border-bottom: 0.25px solid black;
+}
+
+/* Slideshow styles */
+#slideshow * {
+	font-family: Georgia, serif;
+	text-align: center;
+}
+.slideshow-container {
+	max-width: 800px;
+	position: relative;
+	margin: 25px auto; /* 150px */
+}
+#slideshow > p {
+	font-size: 1.3em;
+}
+.slides {
+	display: none;
+}
+.slides img {
+	vertical-align: middle;
+	margin: auto;
+	width: 750px;
+	height: 500px;
+	border: 1px solid black;
+	border-radius: 15px;
+	filter: grayscale(100%);
+}
+.slides img:hover {
+	-webkit-animation-name: colorize;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-fill-mode: forwards;
+	animation-name: colorize;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+@keyframes colorize {
+	from {
+		filter: grayscale(100%);
+	}
+	to {
+		filter: grayscale(30%);
+	}
+}
+@-webkit-keyframes colorize {
+	from {
+		filter: grayscale(100%);
+	}
+	to {
+		filter: grayscale(30%);
+	}
+}
+.caption {
+	color: #f2f2f2;
+	font-size: 1.5rem;
+	position: absolute;
+	bottom: 1em;
+	width: 100%;
+	text-align: center;
+}
+.caption span {
+	background-color: rgba(0, 0, 0, 0.6);
+	padding: 2px 5px;
+	border-radius: 5px;
+}
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 5s;
+	animation-name: fade;
+	animation-duration: 5s;
+}
+
+@-webkit-keyframes fade {
+	0% {
+		opacity: 0.6;
+	}
+	30% {
+		opacity: 0.8;
+	}
+	80% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0.6;
+	}
+	30% {
+		opacity: 0.8;
+	}
+	80% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.slides img {
+		width: 500px;
+		height: 333px;
+	}
+	.intro {
+		text-align: center;
+	}
+}
+
+/* Kahwa specials */
+.special {
+	width: fit-content;
+}

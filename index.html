@@ -10,7 +10,7 @@
 			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 			crossorigin="anonymous"
 		/>
-		<link href="css/styles.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
 
 		<link
 			rel="stylesheet"
@@ -18,19 +18,20 @@
 			integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
 			crossorigin="anonymous"
 		/>
-		<title>3al Qahwa</title>
+		<title>3al Kahwa</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="index.html">
+				<!-- TEMPORARY -->
 				<img
 					src="img/coffee-cup.svg"
 					alt="logo"
 					width="35px"
-					height="35px"
+					height="30rem"
 					class="logo"
 					onerror="this.onerror=null; this.src='img/coffee-cup.png'"
-				/>Qahwa Café
+				/>3al Kahwa
 			</a>
 			<button
 				class="navbar-toggler"
@@ -49,9 +50,6 @@
 						<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="special.html">Today's Special</a>
-					</li>
-					<li class="nav-item">
 						<a class="nav-link" href="menu.html">Menu</a>
 					</li>
 					<li class="nav-item">
@@ -63,80 +61,180 @@
 				</ul>
 			</div>
 		</nav>
-		<!-- Main Section -->
-		<header id="main-header">
-			<img src="img/lamp.png" alt="ceiling lamp" width="60px" height="100px" />
-			<h1>Welcome to Lialy Masria</h1>
-			<img src="img/bar.png" alt="cafe bar" />
+
+		<header class="index-header">
+			<div class="layer"></div>
+			<h1 id="moto">Mesmerizing Experience 3aNasya</h1>
 		</header>
 
-		<section id="intro">
-			<h2>Mesmerizing Experience 3aNasya</h2>
+		<section class="intro">
+			<h2><q>A second home.</q></h2>
+			<!-- Indulge authenticity at its finest. -->
 			<p>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, quam sunt ad modi animi illum iure repudiandae,
-				aliquam nihil suscipit consequuntur, veritatis expedita illo fugit enim natus nulla obcaecati ratione.
+				Kahwa Baladi is a traditional local Egyptian coffee place. Egyptian Kahwa lets you indulge concentrated vibes of
+				simplicity and authenticity.
 			</p>
+			<div class="border-div"></div>
 		</section>
-		<section id="popular-items">
-			<h2>Popular items</h2>
-			<!-- <div class="container"> -->
-			<div class="card-group">
-				<div class="card">
-					<img class="card-img" src="/img/pngegg (1).png" alt="Card image cap" />
-					<div class="card-img-overlay">This is some text within a card block.</div>
+		<section id="slideshow">
+			<h2>El-Kahwa Al-Baladi</h2>
+			<p>is a place where you can...</p>
+
+			<div class="slideshow-container">
+				<div class="slides fade">
+					<img src="img/ahwa-talks.jpg" alt="People sitting on an open street cafe chatting" />
+					<div class="caption"><span>Appreciate moments spent with dear ones</span></div>
 				</div>
-				<div class="card">
-					<img class="card-img" src="/img/pngegg (1).png" alt="Card image cap" />
-					<div class="card-img-overlay">This is some text within a card block.</div>
+
+				<div class="slides fade">
+					<img src="img/qahwagy-bar.jpg" alt="Egyptian traditional barista/waiter at the cafe bar " />
+					<div class="caption"><span>Enjoy beverages of simplicity and kindness</span></div>
 				</div>
-				<div class="card">
-					<img class="card-img" src="/img/pngegg (1).png" alt="Card image cap" />
-					<div class="card-img-overlay">This is some text within a card block.</div>
-					<div class="card-body">Ma bodyyyy yyyy yyyy yyy!</div>
+
+				<div class="slides fade">
+					<img src="img/postmatch-gathering.jpg" alt="A celebratory gathering after game victory" />
+					<div class="caption"><span>Share your hype and cheer</span></div>
+				</div>
+
+				<div class="slides fade">
+					<img src="img/calm-guts.jpg" alt="Simple concerned man sitting alone, thinking" />
+					<div class="caption"><span>Calm your guts down</span></div>
 				</div>
 			</div>
-			<!-- </div> -->
+
+			<div class="border-div"></div>
 		</section>
 
+		<section class="special container-fluid my-5 mx-auto">
+			<h2>Kahwa Specials</h2>
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 my-3">
+					<div class="card">
+						<div class="card-body">
+							<img src="./img/Shay.jpg" class="card-img-top" alt="..." />
+							<h5 class="card-title">Tea "Shay"</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a
+								class="btn btn-info text-center"
+								data-toggle="collapse"
+								href="#price1"
+								role="button"
+								aria-expanded="false"
+								aria-controls="price1"
+							>
+								Price
+							</a>
+							<div class="collapse" id="price1"><div class="card card-body">3 LE</div></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3 my-3">
+					<div class="card">
+						<div class="card-body">
+							<img src="./img/coffee.jpg" class="card-img-top" alt="..." />
+							<h5 class="card-title">Coffee "Kahwa"</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a
+								class="btn btn-info text-center"
+								data-toggle="collapse"
+								href="#price2"
+								role="button"
+								aria-expanded="false"
+								aria-controls="price2"
+							>
+								Price
+							</a>
+							<div class="collapse" id="price2"><div class="card card-body">5 LE</div></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3 my-3">
+					<div class="card">
+						<div class="card-body">
+							<img src="./img/Shisha-head.jpg" class="card-img-top" alt="..." />
+							<h5 class="card-title">Hooka "Shisha Qas"</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a
+								class="btn btn-info text-center"
+								data-toggle="collapse"
+								href="#price3"
+								role="button"
+								aria-expanded="false"
+								aria-controls="price3"
+							>
+								Price
+							</a>
+							<div class="collapse" id="price3"><div class="card card-body">2.5 LE per head</div></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3 my-3">
+					<div class="card">
+						<div class="card-body">
+							<img src="./img/Birell.jpg" class="card-img-top" alt="..." />
+							<h5 class="card-title">Birell malt beverage</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a
+								class="btn btn-info text-center"
+								data-toggle="collapse"
+								href="#price4"
+								role="button"
+								aria-expanded="false"
+								aria-controls="price4"
+							>
+								Price
+							</a>
+							<div class="collapse" id="price4"><div class="card card-body">5 LE</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 		<!-- Footer -->
-		<footer class="footer-distributed">
-			<div class="footer-left">
-				<h3>CompanyLogo</h3>
+		<footer>
+			<div class="ft-left">
+				<h3>
+					the<img
+						src="./img/seifside-logo.png"
+						style="width: 1em; height: 1em; position: relative; bottom: 5px"
+					/>eifSide
+				</h3>
 				<address>
 					<div>
-						<i class="fa fa-map-marker"></i>
-						<span> 444 S. Cedros Ave Solana Beach, California</span>
+						<i class="fa fa-envelope"></i>
+						<a href="mailto:seifahmed870@yahoo.com" title="My personal email. Contact for hiring.">
+							seifahmed870@yahoo.com</a
+						>
 					</div>
-
 					<div>
 						<i class="fa fa-phone"></i>
-						<a href="tel:+13115552368">(311) 555-2368</a>
-					</div>
-
-					<div>
-						<i class="fa fa-envelope"></i>
-						<a href="mailto:support@company.com"> support@company.com</a>
+						<a href="tel:+000000000" title="Fake placeholder">(311) 555-2368</a>
 					</div>
 				</address>
-				<p class="footer-copyright">Company Name © 2015</p>
-			</div>
-
-			<div class="footer-right">
-				<p class="footer-company-about">
-					<span>About the company</span>
-					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus
-					vehicula sit amet.
-				</p>
-				<div class="footer-icons">
-					<a href="#"><i class="fab fa-facebook"></i></a>
-					<a href="#"><i class="fab fa-twitter"></i></a>
-					<a href="#"><i class="fab fa-linkedin"></i></a>
-					<a href="#"><i class="fab fa-github"></i></a>
+				<div class="ft-icons">
+					<a href="https://www.linkedin.com/in/seifahmed"><i class="fab fa-linkedin"></i></a>
+					<a href="https://github.com/theSeifHub"><i class="fab fa-github"></i></a>
+					<a href="https://twitter.com/theSeifSide"><i class="fab fa-twitter"></i></a>
 				</div>
 			</div>
+
+			<div class="ft-right">
+				<p class="ft-about">
+					<span>About 3al-Kahwa</span>
+					This project was developed and humbly designed by Seif Eldeen Ahmed, soon to be the founder and brand owner of
+					<strong>theSeifSide</strong>.
+				</p>
+				<p class="ft-credits">
+					<a href="#">Tech Stack</a> |
+					<a href="#">Credits</a>
+				</p>
+			</div>
+			<p class="ft-copyright">theSeifSide © 2020</p>
 		</footer>
 
 		<!-- Scripts -->
+		<script src="./js/index.js"></script>
+
 		<script
 			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
