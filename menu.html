@@ -10,23 +10,15 @@
 			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 			crossorigin="anonymous"
 		/>
-		<link href="css/styles.css" rel="stylesheet" />
+		<link href="css/menu.css" rel="stylesheet" />
 		<link
 			rel="stylesheet"
 			href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
 			integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
 			crossorigin="anonymous"
 		/>
-		<title>Menu El-Qahwa</title>
-		<template id="twoCols">
-			<tr>
-				<td>item</td>
-				<td>price</td>
-				<td>item</td>
-				<td>price</td>
-			</tr>
-		</template>
-		<template id="oneCol">
+		<title>Menu El-Kahwa</title>
+		<template>
 			<tr>
 				<td>item</td>
 				<td>price</td>
@@ -36,14 +28,15 @@
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="index.html">
+				<!-- TEMPORARY -->
 				<img
 					src="img/coffee-cup.svg"
 					alt="logo"
 					width="35px"
-					height="35px"
+					height="30rem"
 					class="logo"
 					onerror="this.onerror=null; this.src='img/coffee-cup.png'"
-				/>Qahwa Café
+				/>3al Kahwa
 			</a>
 			<button
 				class="navbar-toggler"
@@ -61,9 +54,6 @@
 					<li class="nav-item">
 						<a class="nav-link" href="index.html">Home</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="special.html">Today's Special</a>
-					</li>
 					<li class="nav-item active">
 						<a class="nav-link" href="menu.html">Menu <span class="sr-only">(current)</span></a>
 					</li>
@@ -77,73 +67,114 @@
 			</div>
 		</nav>
 		<!-- Header -->
-		<header id="main-header">
-			<img src="img/lamp.png" alt="ceiling lamp" width="60px" height="100px" />
-			<h1>Welcome to Lialy Masria</h1>
-			<img src="img/bar.png" alt="cafe bar" />
+		<header class="menu-header">
+			<div class="layer"></div>
+			<h1 id="moto">Affordability owns the place</h1>
 		</header>
 
 		<main>
-			<button class="tablink" onclick="openCity('London', this, 'red')" id="defaultOpen">Hot Beverages</button>
-			<button class="tablink" onclick="openCity('Paris', this, 'green')">Cold Beverages</button>
-			<button class="tablink" onclick="openCity('Tokyo', this, 'blue')">Shisha (Hooka)</button>
-			<button class="tablink" onclick="openCity('Oslo', this, 'orange')">Sandwiches</button>
-			<div id="hot-bev" class="tabcontent">
-				<h1>Hot Beverages</h1>
-				<table></table>
+			<div class="tabsHeader">
+				<button class="tablink" onclick="openMenu('hotBev', this)" id="defaultOpen">Hot Beverages</button>
+				<button class="tablink" onclick="openMenu('coldBev', this)">Cold Beverages</button>
+				<button class="tablink" onclick="openMenu('shisha', this)">Shisha (Hooka)</button>
+				<button class="tablink" onclick="openMenu('sandwiches', this)">Sandwiches</button>
+			</div>
+			<div id="hotBev" class="tabcontent">
+				<h2>Hot Beverages</h2>
+				<div class="row">
+					<div class="column">
+						<table>
+							<tr>
+								<th>Beverage</th>
+								<th>Price(EGP)</th>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 
-			<div id="cold-bev" class="tabcontent">
-				<h1>Cold</h1>
-				<table></table>
+			<div id="coldBev" class="tabcontent">
+				<h2>Cold Beverages</h2>
+				<div class="row">
+					<div class="column">
+						<table>
+							<tr>
+								<th>Beverage</th>
+								<th>Price(EGP)</th>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 
 			<div id="shisha" class="tabcontent">
-				<h1>Shisha (Hooka)</h1>
-				<table></table>
+				<h2>Shisha (Hooka)</h2>
+				<div class="row">
+					<div class="column">
+						<table>
+							<tr>
+								<th>Shisha</th>
+								<th>Price(EGP) / stone</th>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 
 			<div id="sandwiches" class="tabcontent">
-				<h1>Sandwiches</h1>
-				<table></table>
+				<h2>Sandwiches</h2>
+				<div class="row">
+					<div class="column">
+						<table>
+							<tr>
+								<th>Sandwich</th>
+								<th>Price(EGP)</th>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</main>
 		<!-- Footer -->
-		<footer class="footer-distributed">
-			<div class="footer-left">
-				<h3>CompanyLogo</h3>
+		<footer>
+			<div class="ft-left">
+				<h3>
+					the<img
+						src="./img/seifside-logo.png"
+						style="width: 1em; height: 1em; position: relative; bottom: 5px"
+					/>eifSide
+				</h3>
 				<address>
 					<div>
-						<i class="fa fa-map-marker"></i>
-						<span> 444 S. Cedros Ave Solana Beach, California</span>
+						<i class="fa fa-envelope"></i>
+						<a href="mailto:seifahmed870@yahoo.com" title="My personal email. Contact for hiring.">
+							seifahmed870@yahoo.com</a
+						>
 					</div>
-
 					<div>
 						<i class="fa fa-phone"></i>
-						<a href="tel:+13115552368">(311) 555-2368</a>
-					</div>
-
-					<div>
-						<i class="fa fa-envelope"></i>
-						<a href="mailto:support@company.com"> support@company.com</a>
+						<a href="tel:+000000000" title="Fake placeholder">(311) 555-2368</a>
 					</div>
 				</address>
-				<p class="footer-copyright">Company Name © 2015</p>
-			</div>
-
-			<div class="footer-right">
-				<p class="footer-company-about">
-					<span>About the company</span>
-					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus
-					vehicula sit amet.
-				</p>
-				<div class="footer-icons">
-					<a href="#"><i class="fab fa-facebook"></i></a>
-					<a href="#"><i class="fab fa-twitter"></i></a>
-					<a href="#"><i class="fab fa-linkedin"></i></a>
-					<a href="#"><i class="fab fa-github"></i></a>
+				<div class="ft-icons">
+					<a href="https://www.linkedin.com/in/seifahmed"><i class="fab fa-linkedin"></i></a>
+					<a href="https://github.com/theSeifHub"><i class="fab fa-github"></i></a>
+					<a href="https://twitter.com/theSeifSide"><i class="fab fa-twitter"></i></a>
 				</div>
 			</div>
+
+			<div class="ft-right">
+				<p class="ft-about">
+					<span>About 3al-Kahwa</span>
+					This project was developed and humbly designed by Seif Eldeen Ahmed, soon to be the founder and brand owner of
+					<strong>theSeifSide</strong>.
+				</p>
+				<p class="ft-credits">
+					<a href="#">Tech Stack</a> |
+					<a href="#">Credits</a>
+				</p>
+			</div>
+			<p class="ft-copyright">theSeifSide © 2020</p>
 		</footer>
 
 		<!-- Scripts -->
