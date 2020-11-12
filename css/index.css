@@ -44,11 +44,6 @@
 	font-size: 1.3em;
 	padding: 30px 40px;
 }
-.border-div {
-	width: 60%;
-	margin: 25px auto 0;
-	border-bottom: 0.25px solid black;
-}
 
 /* Slideshow styles */
 #slideshow * {
