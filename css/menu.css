@@ -100,3 +100,27 @@ td:nth-child(even) {
 		display: none;
 	}
 }
+#shisha p {
+	position: relative;
+	width: fit-content;
+	width: -moz-fit-content;
+	margin: auto;
+}
+#shisha p:before {
+	display: block;
+	padding-left: 10px;
+	content: "*";
+	font-size: 1.5em;
+	position: absolute;
+	left: -35px;
+	top: -5px;
+}
+#shisha p:after {
+	display: block;
+	padding-left: 10px;
+	content: "*";
+	font-size: 1.5em;
+	position: absolute;
+	right: -30px;
+	top: -5px;
+}

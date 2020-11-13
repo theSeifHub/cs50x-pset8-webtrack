@@ -36,7 +36,7 @@ function menuSection(item) {
             "Saloum (Light Qas)": 3,
             "Tefaah (Apple flavor)": 5,
             "Khoukh (Peach flavor)": 5,
-            "Lemon": 5,
+            "Lemon flavor": 5,
             "Ne'naa' (Mint flavor)": 5
         },
         "sandwiches": {
@@ -56,19 +56,19 @@ function menuSection(item) {
 function insertItems(id) {
     if ("content" in document.createElement("template")) {
         const temp = document.querySelector("template"),
-            tabToPopulate = document.querySelector(`#${id}`),
-            column = tabToPopulate.querySelector(".column"),
+            column = document.querySelector(`#${id}`).querySelector(".column"),
             // cloning column in case of a long list
-            columnClone = column.cloneNode(true),
-            obj = menuSection(id),
-            items = Object.entries(obj),
+            items = Object.entries(menuSection(id)),
             itemsCount = items.length;
-        let frag = document.createDocumentFragment();
+        // console.log(column, columnClone);
+        let frag = document.createDocumentFragment(),
+            columnClone;
         for (const [i, [bev, price]] of items.entries()) {
             // for long lists, when reach the middle item:
             // insert the table in the first column
             // and empty the fragment to be used by the second table
             if (itemsCount > 10 && i === itemsCount / 2) {
+                columnClone = column.cloneNode(true);
                 column.querySelector("table").appendChild(frag);
                 frag.innerHTML = '';
             }
