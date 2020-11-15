@@ -1,0 +1,137 @@
+@import url("./main.css");
+
+.activities-header {
+	background-image: url("../img/chess-players.jpg");
+}
+.activities-header .layer {
+	opacity: 0.8;
+}
+/* Main */
+main {
+	width: 90%;
+	margin: auto;
+	padding: 70px 0;
+}
+main h2 {
+	font-family: Georgia, "Times New Roman", serif;
+	text-align: center;
+}
+main ul {
+	width: 90%;
+	min-width: 600px;
+	margin: 30px auto 0;
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Item boxes */
+main li {
+	background-color: #f7f7f7;
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+	padding: 1em;
+	margin: 20px 0;
+	border-radius: 10px;
+	border: 0.25px solid #ddd;
+	/* box-shadow: 5px 10px 5px 2px #ddd; */
+}
+main li:nth-child(even) {
+	flex-direction: row-reverse;
+	align-self: flex-end;
+}
+/* main li:nth-child(odd) div {
+	text-align: right;
+} */
+main li:hover {
+	-webkit-animation-name: rise;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-fill-mode: forwards;
+	animation-name: rise;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+}
+main li img {
+	width: 250px;
+	height: 250px;
+}
+main li div {
+	margin: auto 15px;
+}
+main li p {
+	opacity: 0;
+	font-size: 1.3em;
+}
+main li:hover p {
+	-webkit-animation-name: appear;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-fill-mode: forwards;
+	animation-name: appear;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+/* Box emphasis animations */
+@-webkit-keyframes rise {
+	from {
+		transform: scale(1, 1);
+	}
+	to {
+		transform: scale(1.1, 1.1);
+		box-shadow: 5px 10px 5px 2px #ddd;
+		border: none;
+	}
+}
+
+@keyframes rise {
+	from {
+		transform: scale(1, 1);
+	}
+	to {
+		transform: scale(1.1, 1.1);
+		box-shadow: 5px 10px 5px 2px #ddd;
+		border: none;
+	}
+}
+@-webkit-keyframes appear {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Media queries */
+@media screen and (max-width: 600px) {
+	main ul {
+		min-width: 100%;
+	}
+}
+@media screen and (max-width: 600px) {
+	main ul {
+		min-width: 100%;
+	}
+}
+@media screen and (max-width: 550px) {
+	main li,
+	main li:nth-child(even) {
+		flex-direction: column;
+		align-self: center;
+		width: fit-content;
+	}
+	main li div {
+		margin-top: 10px;
+	}
+}
