@@ -102,8 +102,8 @@ td:nth-child(even) {
 }
 #shisha p {
 	position: relative;
-	width: fit-content;
 	width: -moz-fit-content;
+	width: fit-content;
 	margin: auto;
 }
 #shisha p:before {

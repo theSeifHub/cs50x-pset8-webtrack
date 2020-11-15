@@ -7,12 +7,15 @@
 html,
 body {
 	height: 100%;
-	font-family: "Open Sans";
+	font-family: serif;
 }
 
 /* ========== NAVIGATION ========== */
 [class="navbar-brand"] {
-	font-family: "Fredericka the Great", "Open Sans";
+	font-family: "Fredericka the Great", serif;
+}
+nav ul {
+	font-family: "Open Sans", sans-serif;
 }
 
 /* ========== HEADER ========== */
@@ -35,7 +38,7 @@ header {
 	background-color: rgba(255, 255, 255, 0.5);
 }
 header h1 {
-	font-family: "Fredericka the Great", "Open Sans";
+	font-family: "Fredericka the Great", serif;
 	font-size: 3em;
 	color: black;
 	width: 100%;
@@ -70,7 +73,7 @@ footer {
 	width: 60%;
 }
 footer h3 {
-	font: normal 28px "Open Sans", cursive;
+	font: normal 28px serif, cursive;
 }
 footer a {
 	color: #ffffff;
@@ -83,14 +86,14 @@ address > div {
 	font: bold 16px serif;
 	margin-bottom: 10px;
 	margin-right: 10px;
-	width: fit-content;
 	width: -moz-fit-content;
+	width: fit-content;
 }
 .ft-icons {
 	margin: 15px 0 10px;
 	background-color: white;
-	width: fit-content;
 	width: -moz-fit-content;
+	width: fit-content;
 	border-radius: 3px;
 }
 .ft-icons a {
@@ -179,10 +182,8 @@ footer .ft-links a {
 	text-decoration: none;
 	color: inherit;
 } */
-/* If you don't want the footer to be responsive, remove these media queries */
 
 /* NAVIGATION */
-
 /* #navbar {
 	width: 100%;
 	position: fixed;
