@@ -1,0 +1,33 @@
+@import url("./main.css");
+
+/* Header */
+#contact-header {
+	min-height: -moz-fit-content;
+	min-height: fit-content;
+	height: -moz-fit-content;
+	height: fit-content;
+	padding: 50px 0;
+}
+#contact-header h1 {
+	position: static;
+}
+/* Form */
+#contact-form {
+	font-size: 1.5em;
+}
+
+button[type="submit"] {
+	font-size: 1.2rem;
+	margin-top: auto;
+	position: relative;
+	left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+	#contact-form {
+		flex-direction: column;
+	}
+	button[type="submit"] {
+		position: static;
+	}
+}
