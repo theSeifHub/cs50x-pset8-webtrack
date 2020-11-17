@@ -12,26 +12,12 @@
 		/>
 		<link href="css/index.css" rel="stylesheet" />
 
-		<link
-			rel="stylesheet"
-			href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-			integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
-			crossorigin="anonymous"
-		/>
 		<title>3al Qahwa</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<a class="navbar-brand" href="index.html">
-				<!-- TEMPORARY -->
-				<img
-					src="img/coffee-cup.svg"
-					alt="logo"
-					width="35px"
-					height="30rem"
-					class="logo"
-					onerror="this.onerror=null; this.src='img/coffee-cup.png'"
-				/>3al Qahwa
+				<img src="img/3alqahwa-logo.png" alt="logo" width="80rem" height="30rem" class="logo" />
 			</a>
 			<button
 				class="navbar-toggler"
@@ -64,12 +50,11 @@
 
 		<header class="index-header">
 			<div class="layer"></div>
-			<h1 id="moto">Mesmerizing Experience 3aNasya</h1>
+			<h1 id="moto"><span title="At the cafe" lang="ar">ع القهوة</span></h1>
 		</header>
 
 		<section class="intro">
 			<h2><q>A second home.</q></h2>
-			<!-- Indulge authenticity at its finest. -->
 			<p>
 				Qahwa Baladi is a traditional local Egyptian coffee place. Egyptian Qahwa pampers you with concentrated vibes of
 				simplicity and authenticity.
@@ -218,20 +203,37 @@
 			<div class="ft-right">
 				<p class="ft-about">
 					<span>About 3al-Qahwa</span>
-					This project was developed and humbly designed by Seif Eldeen Ahmed, soon to be the founder and brand owner of
+					<em>3al-Qahwa</em> is a project that introduces the traditional Egyptian cafe "<b>Qahwa</b>".<br />
+					Developed and humbly designed by Seif Eldeen Ahmed, soon to be the founder and brand owner of
 					<strong>theSeifSide</strong>.
 				</p>
-				<p class="ft-credits">
-					<a href="#">Tech Stack</a> |
-					<a href="#">Credits</a>
-				</p>
+				<div class="ft-credits">
+					<div id="tech-stack" class="popover">
+						<div>
+							<h5>Technologies Used</h5>
+							<img id="html" src="./img/html5-32-32.png" title="HTML5" alt="HTML5" />
+							<img id="css" src="./img/css3-32-32.png" title="CSS3" alt="CSS3" />
+							<img id="js" src="./img/js-32-32.png" title="JavaScript ES6+" alt="JavaScript ES6+" />
+							<img id="bts" src="./img/bootstrap-32-32.png" title="Bootstrap 4.5" alt="Bootstrap 4.5" />
+							<div id="arrow"></div>
+						</div>
+					</div>
+					<a href="#" onclick="toggleDiv(event)">Tech Stack</a> |
+					<a href="./credits.html" target="_blank">Credits</a>
+				</div>
 			</div>
 			<p class="ft-copyright">theSeifSide © 2020</p>
 		</footer>
 
 		<!-- Scripts -->
 		<script src="./js/index.js"></script>
-
+		<script>
+			function toggleDiv(e) {
+				e.preventDefault();
+				const techDiv = document.getElementById("tech-stack");
+				techDiv.classList.toggle("popover");
+			}
+		</script>
 		<script
 			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -249,24 +251,3 @@
 		></script>
 	</body>
 </html>
-
-<!-- Footer Elements -->
-<!-- <div class="container"> -->
-<!--Grid row-->
-<!-- <div class="row d-flex justify-content-center"> -->
-<!--Grid column-->
-<!-- <div class="col-md-6"> -->
-<!-- Video -->
-<!-- <div class="embed-responsive embed-responsive-16by9 mb-4"> -->
-<!-- <iframe
-	class="embed-responsive-item"
-	src="https://www.youtube.com/embed/vlDzYIIOYmM"
-	allowfullscreen -->
-<!-- ></iframe> -->
-<!-- </div> -->
-<!-- </div> -->
-<!--Grid column-->
-<!-- </div> -->
-<!--Grid row-->
-<!-- </div> -->
-<!-- Footer Elements -->

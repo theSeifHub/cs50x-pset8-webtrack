@@ -1,3 +1,4 @@
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/all.css");
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Open+Sans:wght@300;400;700&display=swap");
 
 /* ========== GENERAL ========== */
@@ -8,6 +9,9 @@ html,
 body {
 	height: 100%;
 	font-family: serif;
+}
+[lang="ar"] {
+	direction: rtl;
 }
 
 /* ========== NAVIGATION ========== */
@@ -35,7 +39,7 @@ header {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.4);
 }
 header h1 {
 	font-family: "Fredericka the Great", serif;
@@ -58,7 +62,6 @@ header h1 {
 /* ========== FOOTER ========== */
 footer {
 	background: #666;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
@@ -67,7 +70,6 @@ footer {
 .ft-left,
 .ft-right {
 	display: inline-block;
-	/* vertical-align: center; */
 }
 .ft-left {
 	width: 60%;
@@ -79,7 +81,8 @@ footer a {
 	color: #ffffff;
 }
 footer a:hover {
-	color: lightseagreen;
+	color: #17a2b8;
+	text-decoration: none;
 }
 address > div {
 	display: inline-block;
@@ -128,10 +131,11 @@ address > div {
 .ft-about,
 .ft-credits {
 	line-height: 20px;
-	color: #92999f;
+	color: #fff;
 	font-size: 16px;
 	font-weight: normal;
 	margin-bottom: 10px;
+	position: relative;
 }
 .ft-about span {
 	display: block;
@@ -139,6 +143,38 @@ address > div {
 	font-size: 20px;
 	font-weight: bold;
 	margin: 25px 0 15px;
+}
+/* Tech stack popover box */
+#tech-stack {
+	width: 100%;
+	position: absolute;
+	top: -95px;
+	left: -50px;
+}
+#tech-stack > div {
+	color: black;
+	background-color: #fff;
+	width: 180px;
+	text-align: center;
+	padding: 8px;
+	margin: 0;
+	border: 0.5px solid black;
+	border-radius: 10px;
+}
+#arrow {
+	background-color: #fff;
+	width: 15px;
+	height: 15px;
+	margin: auto;
+	position: absolute;
+	left: 80px;
+	bottom: -7.5px;
+	border-bottom: 0.5px solid black;
+	border-right: 0.5px solid black;
+	transform: rotate(45deg);
+}
+.popover {
+	display: none;
 }
 @media (max-width: 880px) {
 	footer {
@@ -154,64 +190,11 @@ address > div {
 	.ft-icons {
 		margin: 15px auto 10px;
 	}
+	#tech-stack > div {
+		width: 190px;
+		margin: auto;
+	}
+	#arrow {
+		left: 50%;
+	}
 }
-
-button[type="submit"] {
-	margin-left: 53%;
-}
-[lang="ar"] {
-	direction: rtl;
-}
-/* =========================================================================== */
-/* footer h3 span {
-	color: lightseagreen;
-} */
-
-/* Footer links */
-
-/* footer .ft-links {
-	color: #ffffff;
-	margin: 20px 0 12px;
-	padding: 0;
-}
-
-footer .ft-links a {
-	display: inline-block;
-	line-height: 1.8;
-	font-weight: 400;
-	text-decoration: none;
-	color: inherit;
-} */
-
-/* NAVIGATION */
-/* #navbar {
-	width: 100%;
-	position: fixed;
-	top: 1;
-	opacity: 0.3;
-	z-index: 99;
-}
-#navbar:hover {
-	opacity: 1;
-} */
-
-/* SLIDESHOW */
-/* .numbertext {
-	color: #f2f2f2;
-	font-size: 12px;
-	padding: 8px 12px;
-	position: absolute;
-	top: 0;
-}
-.dot {
-	height: 15px;
-	width: 15px;
-	margin: 0 2px;
-	background-color: #bbb;
-	border-radius: 50%;
-	display: inline-block;
-	transition: background-color 0.6s ease;
-}
-.active {
-	background-color: #717171;
-} */

@@ -1,9 +1,15 @@
 @import url("./main.css");
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+@import url("http://fonts.cdnfonts.com/css/ukij-chiwer-kesme");
 
 /* Header Bg */
 .index-header {
 	background-image: url("../img/ahwa-setting-650.jpg");
+}
+#moto {
+	color: rgb(0, 0, 0);
+	font-family: "UKIJ Chiwer Kesme", sans-serif;
+	font-size: 10em;
 }
 /* Intro */
 .intro {
@@ -54,7 +60,7 @@
 .slideshow-container {
 	max-width: 800px;
 	position: relative;
-	margin: 25px auto; /* 150px */
+	margin: 25px auto;
 }
 #slideshow > p {
 	font-size: 1.3em;
@@ -144,6 +150,9 @@
 	.slides img {
 		width: 500px;
 		height: 333px;
+	}
+	.caption {
+		font-size: 1.5em;
 	}
 	.intro {
 		text-align: center;

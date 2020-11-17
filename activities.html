@@ -15,17 +15,9 @@
 		<title>Activities - 3al Qahwa</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<a class="navbar-brand" href="index.html">
-				<!-- TEMPORARY -->
-				<img
-					src="img/coffee-cup.svg"
-					alt="logo"
-					width="35px"
-					height="30rem"
-					class="logo"
-					onerror="this.onerror=null; this.src='img/coffee-cup.png'"
-				/>3al Qahwa
+				<img src="img/3alqahwa-logo.png" alt="logo" width="80rem" height="30rem" class="logo" />
 			</a>
 			<button
 				class="navbar-toggler"
@@ -157,19 +149,36 @@
 			<div class="ft-right">
 				<p class="ft-about">
 					<span>About 3al-Qahwa</span>
-					This project was developed and humbly designed by Seif Eldeen Ahmed, soon to be the founder and brand owner of
+					<em>3al-Qahwa</em> is a project that introduces the traditional Egyptian cafe "<b>Qahwa</b>".<br />
+					Developed and humbly designed by Seif Eldeen Ahmed, soon to be the founder and brand owner of
 					<strong>theSeifSide</strong>.
 				</p>
-				<p class="ft-credits">
-					<a href="#">Tech Stack</a> |
-					<a href="#">Credits</a>
-				</p>
+				<div class="ft-credits">
+					<div id="tech-stack" class="popover">
+						<div>
+							<h5>Technologies Used</h5>
+							<img id="html" src="./img/html5-32-32.png" title="HTML5" alt="HTML5" />
+							<img id="css" src="./img/css3-32-32.png" title="CSS3" alt="CSS3" />
+							<img id="js" src="./img/js-32-32.png" title="JavaScript ES6+" alt="JavaScript ES6+" />
+							<img id="bts" src="./img/bootstrap-32-32.png" title="Bootstrap 4.5" alt="Bootstrap 4.5" />
+							<div id="arrow"></div>
+						</div>
+					</div>
+					<a href="#" onclick="toggleDiv(event)">Tech Stack</a> |
+					<a href="./credits.html" target="_blank">Credits</a>
+				</div>
 			</div>
 			<p class="ft-copyright">theSeifSide © 2020</p>
 		</footer>
 
 		<!-- Scripts -->
-		<script src="js/activities.js"></script>
+		<script>
+			function toggleDiv(e) {
+				e.preventDefault();
+				const techDiv = document.getElementById("tech-stack");
+				techDiv.classList.toggle("popover");
+			}
+		</script>
 		<script
 			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
