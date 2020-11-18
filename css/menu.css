@@ -30,10 +30,6 @@ main {
 .tablink:hover {
 	background-color: #777;
 }
-/* button:focus,
-.tablink:focus {
-	border-bottom: 0.5px solid white;
-} */
 .tabcontent {
 	font-family: "DJB Chalk It Up", sans-serif;
 	color: white;

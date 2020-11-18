@@ -22,6 +22,11 @@ nav ul {
 	font-family: "Open Sans", sans-serif;
 }
 
+@media (max-width: 576px) {
+	#site-logo {
+		margin: auto;
+	}
+}
 /* ========== HEADER ========== */
 header {
 	min-height: 550px;

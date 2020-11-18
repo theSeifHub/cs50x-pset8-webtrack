@@ -32,7 +32,8 @@ main li {
 	display: flex;
 	justify-content: space-between;
 	width: 70%;
-	padding: 1em;
+	height: 280px;
+	padding: 15px;
 	margin: 20px 0;
 	border-radius: 10px;
 	border: 0.25px solid #ddd;
@@ -42,9 +43,6 @@ main li:nth-child(even) {
 	flex-direction: row-reverse;
 	align-self: flex-end;
 }
-/* main li:nth-child(odd) div {
-	text-align: right;
-} */
 main li:hover {
 	-webkit-animation-name: rise;
 	-webkit-animation-duration: 0.3s;
@@ -84,7 +82,6 @@ main li:hover p {
 		border: none;
 	}
 }
-
 @keyframes rise {
 	from {
 		transform: scale(1, 1);
@@ -103,7 +100,6 @@ main li:hover p {
 		opacity: 1;
 	}
 }
-
 @keyframes appear {
 	from {
 		opacity: 0;
@@ -114,22 +110,34 @@ main li:hover p {
 }
 
 /* Media queries */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
+	main h2 {
+		font-size: 1.7em;
+	}
 	main ul {
 		min-width: 100%;
 	}
-}
-@media screen and (max-width: 600px) {
-	main ul {
-		min-width: 100%;
+	main li,
+	main li:nth-child(even) {
+		align-self: center;
+		width: 90%;
+	}
+	main li h3 {
+		font-size: 1.5em;
+	}
+	main li p {
+		font-size: 1.1em;
 	}
 }
-@media screen and (max-width: 550px) {
+
+@media screen and (max-width: 560px) {
 	main li,
 	main li:nth-child(even) {
 		flex-direction: column;
 		align-self: center;
-		width: fit-content;
+		width: 280px;
+		height: -moz-fit-content;
+		height: fit-content;
 	}
 	main li div {
 		margin-top: 10px;
