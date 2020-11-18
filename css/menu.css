@@ -1,5 +1,11 @@
-@import url("http://fonts.cdnfonts.com/css/djb-chalk-it-up");
 @import url("./main.css");
+/* @import url("http://fonts.cdnfonts.com/css/djb-chalk-it-up"); */
+@font-face {
+	font-family: "DJB Chalk It Up";
+	font-style: normal;
+	font-weight: 400;
+	src: local("DJB Chalk It Up"), url("https://fonts.cdnfonts.com/s/16766/DJB Chalk It Up.woff") format("woff");
+}
 
 /* Header Bg */
 .menu-header {
