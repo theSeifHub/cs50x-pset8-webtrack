@@ -146,6 +146,17 @@
 	}
 }
 
+/* Qahwa video */
+.index-video {
+	width: -moz-fit-content;
+	width: fit-content;
+	margin: 40px auto;
+}
+#qahwa-video {
+	width: 560px;
+	height: 315px;
+}
+
 @media only screen and (max-width: 800px) {
 	.slides img {
 		width: 500px;
@@ -157,14 +168,18 @@
 	.intro {
 		text-align: center;
 	}
+	#qahwa-video {
+		width: 360px;
+		height: 205px;
+	}
 }
 
-/* Qahwa specials */
-.special {
-	width: -moz-fit-content;
-	width: fit-content;
-}
-[class="btn btn-info"] {
-	margin-bottom: 10px;
-	font-size: 1.2em;
+@media only screen and (max-width: 576px) {
+	.slides img {
+		width: 360px;
+		height: 240px;
+	}
+	.caption {
+		font-size: 1em;
+	}
 }

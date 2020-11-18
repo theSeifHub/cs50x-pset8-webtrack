@@ -120,3 +120,13 @@ td:nth-child(even) {
 	right: -30px;
 	top: -5px;
 }
+
+/* Qahwa Specials */
+.special {
+	width: -moz-fit-content;
+	width: fit-content;
+}
+[class="btn btn-info"] {
+	margin-bottom: 10px;
+	font-size: 1.2em;
+}
