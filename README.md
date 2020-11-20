@@ -1,2 +1,3 @@
-# cs50x-pset8-webtrack
-Submission for CS50x: Harvard's Introduction to Computer Science's Problem Set 8, Web track
+# C$50 Finance
+
+Implement a website via which users can “buy” and “sell” stocks. [More...](https://cs50.harvard.edu/x/2020/tracks/web/finance/)
