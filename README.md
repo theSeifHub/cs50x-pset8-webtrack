@@ -4,7 +4,10 @@ Implement a website via which users can “buy” and “sell” stocks. [More..
 
 ## Getting started (on Windows):
 
-1. Clone the repo.
+1. Clone this branch only:
+   ```
+   git clone -b finance --single-branch https://github.com/theSeifHub/cs50x-pset8-webtrack.git
+   ```
 2. Assuming you have [Python 3](https://www.python.org/downloads/) installed; install [`venv`](https://docs.python.org/3/library/venv.html) in your work directory. In your terminal, execute:
    ```
    py -3 -m venv venv
