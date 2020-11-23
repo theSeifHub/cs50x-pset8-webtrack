@@ -9,6 +9,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup, usd
 
+
 # Configure application
 app = Flask(__name__)
 
@@ -16,12 +17,15 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Ensure responses aren't cached
+
+
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
     return response
+
 
 # Custom filter
 app.jinja_env.filters["usd"] = usd
@@ -39,32 +43,50 @@ db = SQL("sqlite:///finance.db")
 if not os.environ.get("API_KEY"):
     raise RuntimeError("API_KEY not set")
 
+"""
+Show portfolio of stocks
+============================================
+"""
+
 
 @app.route("/")
 @login_required
 def index():
-    """Show portfolio of stocks"""
-    return apology("TODO")
+    return render_template("index.html")
+
+
+"""
+Buy shares of stock
+============================================
+"""
 
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
-    """Buy shares of stock"""
     return apology("TODO")
+
+
+"""
+Show history of transactions
+============================================
+"""
 
 
 @app.route("/history")
 @login_required
 def history():
-    """Show history of transactions"""
     return apology("TODO")
+
+
+"""
+Log user in
+============================================
+"""
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    """Log user in"""
-
     # Forget any user_id
     session.clear()
 
@@ -98,10 +120,14 @@ def login():
         return render_template("login.html")
 
 
+"""
+Log user out
+============================================
+"""
+
+
 @app.route("/logout")
 def logout():
-    """Log user out"""
-
     # Forget any user_id
     session.clear()
 
@@ -109,28 +135,71 @@ def logout():
     return redirect("/")
 
 
+"""
+Get stock quote.
+============================================
+"""
+
+
 @app.route("/quote", methods=["GET", "POST"])
 @login_required
 def quote():
-    """Get stock quote."""
+
     return apology("TODO")
+
+
+"""
+Register a new user
+============================================
+"""
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    """Register user"""
-    return apology("TODO")
+    if request.method == "POST":
+        # Ensure username was submitted
+        if not request.form.get("username"):
+            return apology("must provide username", 403)
+        # Ensure password was submitted
+        elif not request.form.get("password"):
+            return apology("must provide password", 403)
+        # Ensure both password entries match
+        elif not request.form.get("confirmation") or request.form.get("confirmation") != request.form.get("password"):
+            return apology("passwords don't match", 403)
+
+        # Query database for duplicate username
+        rows = db.execute("SELECT * FROM users WHERE username = :username",
+                          username=request.form.get("username"))
+
+        if len(rows) > 0:
+            return apology("User is", "NOT Available!")
+        elif len(rows) == 0:
+            db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
+                       username=request.form.get("username"), hash=generate_password_hash(request.form.get("password")))
+            return redirect("/login")
+    else:
+        return render_template("register.html")
+
+
+"""
+Sell shares of stock
+============================================
+"""
 
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
 def sell():
-    """Sell shares of stock"""
     return apology("TODO")
 
 
+"""
+Handle error
+============================================
+"""
+
+
 def errorhandler(e):
-    """Handle error"""
     if not isinstance(e, HTTPException):
         e = InternalServerError()
     return apology(e.name, e.code)
