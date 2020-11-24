@@ -1,4 +1,10 @@
-{% extends "layout.html" %} {% block main %}
+{% extends "layout.html" %}
+
+{% block title %}
+	Register
+{% endblock %}
+
+{% block main %}
 <form action="/register" method="POST">
 	<div class="form-group">
 		<input

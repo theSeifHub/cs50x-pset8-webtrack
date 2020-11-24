@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %} Quote {% endblock %}
+
+{% block main %}
+	{% if showResult %}
+		<p>A share of <b>{{ name }} ({{ symbol }})</b> costs <b>${{ price }}</b></p>
+
+		<a href="/buy" class="btn btn-primary">Buy {{ symbol }}</a>
+		{% if ownShares %}
+			<a href="/sell" class="btn btn-light">Sell {{ symbol }}</a>
+		{% endif %}
+	{% else %}
+		<form action="/quote" method="POST">
+			<div class="form-group">
+				<input class="form-control" type="text" name="symbol" placeholder="Enter Symbol" required autocomplete autofocus />
+			</div>
+
+			<button class="btn btn-primary" type="submit">Quote</button>
+		</form>
+	{% endif %}
+{% endblock %}

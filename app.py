@@ -144,8 +144,15 @@ Get stock quote.
 @app.route("/quote", methods=["GET", "POST"])
 @login_required
 def quote():
-
-    return apology("TODO")
+    if request.method == "POST":
+        resp = lookup(request.form.get("symbol"))
+        if not resp:
+            return apology("", "No such stock")
+        else:
+            ownShares = False
+            return render_template("quote.html", showResult=True, name=resp['name'], symbol=resp['symbol'], price=resp['price'], ownShares=ownShares)
+    else:
+        return render_template("quote.html")
 
 
 """
@@ -171,12 +178,17 @@ def register():
         rows = db.execute("SELECT * FROM users WHERE username = :username",
                           username=request.form.get("username"))
 
+        # Reject registration if username is already in database
         if len(rows) > 0:
-            return apology("User is", "NOT Available!")
-        elif len(rows) == 0:
-            db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
-                       username=request.form.get("username"), hash=generate_password_hash(request.form.get("password")))
-            return redirect("/login")
+            return apology("TAKEN!", "Username")
+
+        # If username is available: register user, then log in
+        db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
+                   username=request.form.get("username"), hash=generate_password_hash(request.form.get("password")))
+        flash('Registered successfully! Log in below to access your account.')
+        return render_template("login.html")
+
+    # If method = GET
     else:
         return render_template("register.html")
 
