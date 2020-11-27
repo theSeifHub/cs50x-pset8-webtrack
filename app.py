@@ -6,6 +6,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import datetime
 
 from helpers import apology, login_required, lookup, usd
 
@@ -64,7 +65,53 @@ Buy shares of stock
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
-    return apology("TODO")
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        # If no value provided
+        if not symbol:
+            return apology('', 'please enter a valid symbol')
+
+        stock_pack = lookup(symbol)
+        # If symbol is unavailable or invalid
+        if stock_pack is None:
+            return apology('', 'No such symbol')
+        else:
+            user_id = session.get("user_id")
+            shares = int(request.form.get("shares"))
+            total_cost = shares * stock_pack["price"]
+            user_cash = db.execute(
+                "SELECT cash FROM users WHERE id = :uid", uid=user_id)
+
+            if len(user_cash) != 1:
+                return apology(len(user_cash), "db array sucks")
+            elif user_cash[0]["cash"] < total_cost:
+                return apology("pooooor!", "not enough money")
+            else:
+                now = datetime.now()
+                db.execute(
+                    "INSERT INTO stock (userID, symbol, name, shares, unit_price, total_cost, dateID) VALUES (:userID, :symbol, :name, :shares, :unit_price, :total_cost, :dateID)",
+                    userID=user_id,
+                    symbol=stock_pack["symbol"],
+                    name=stock_pack["name"],
+                    shares=shares,
+                    unit_price=stock_pack["price"],
+                    total_cost=total_cost,
+                    dateID=now
+                )
+                rest = user_cash[0]["cash"] - total_cost
+                db.execute("UPDATE users SET cash = :rest WHERE id = :uid",
+                           rest=rest, uid=user_id)
+                if rest == 0:
+                    flash("No more cash!")
+                elif rest < 5:
+                    flash("You just milked off your account.")
+                else:
+                    flash("Successful Process!")
+            return render_template("index.html")
+
+    # If method = GET
+    else:
+        return render_template("buy.html")
 
 
 """
