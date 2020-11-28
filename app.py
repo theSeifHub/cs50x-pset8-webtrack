@@ -53,7 +53,24 @@ Show portfolio of stocks
 @app.route("/")
 @login_required
 def index():
-    return render_template("index.html")
+    user_id = session.get("user_id")
+    user_cash = db.execute(
+        "SELECT cash FROM users WHERE id = :uid", uid=user_id)[0]["cash"]
+    user_assets = db.execute(
+        "SELECT symbol, name, SUM(shares) FROM stock WHERE userID = :uid GROUP BY symbol", uid=user_id)
+    total_assets = user_cash
+    for asset in user_assets:
+        if asset["SUM(shares)"] > 0:
+            stock_info = lookup(asset["symbol"])
+            # return apology(str(stock_info), str(type(user_cash)))
+            asset["price"] = usd(stock_info["price"])
+            asset["total_cost"] = usd(
+                asset["SUM(shares)"] * stock_info["price"])
+            total_assets = total_assets + \
+                (asset["SUM(shares)"] * stock_info["price"])
+    username = db.execute(
+        "SELECT username FROM users WHERE id = :uid", uid=user_id)[0]["username"]
+    return render_template("index.html", user=username, assets=user_assets, cash=usd(user_cash), total_assets=usd(total_assets))
 
 
 """
@@ -65,40 +82,39 @@ Buy shares of stock
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
+    user_id = session.get("user_id")
+
     if request.method == "POST":
         symbol = request.form.get("symbol")
         # If no value provided
         if not symbol:
             return apology('', 'please enter a valid symbol')
 
-        stock_pack = lookup(symbol)
+        stock_info = lookup(symbol)
         # If symbol is unavailable or invalid
-        if stock_pack is None:
+        if stock_info is None:
             return apology('', 'No such symbol')
         else:
-            user_id = session.get("user_id")
             shares = int(request.form.get("shares"))
-            total_cost = shares * stock_pack["price"]
+            total_cost = shares * stock_info["price"]
             user_cash = db.execute(
-                "SELECT cash FROM users WHERE id = :uid", uid=user_id)
+                "SELECT cash FROM users WHERE id = :uid", uid=user_id)[0]["cash"]
 
-            if len(user_cash) != 1:
-                return apology(len(user_cash), "db array sucks")
-            elif user_cash[0]["cash"] < total_cost:
+            if user_cash < total_cost:
                 return apology("pooooor!", "not enough money")
             else:
                 now = datetime.now()
                 db.execute(
                     "INSERT INTO stock (userID, symbol, name, shares, unit_price, total_cost, dateID) VALUES (:userID, :symbol, :name, :shares, :unit_price, :total_cost, :dateID)",
                     userID=user_id,
-                    symbol=stock_pack["symbol"],
-                    name=stock_pack["name"],
+                    symbol=stock_info["symbol"],
+                    name=stock_info["name"],
                     shares=shares,
-                    unit_price=stock_pack["price"],
+                    unit_price=stock_info["price"],
                     total_cost=total_cost,
                     dateID=now
                 )
-                rest = user_cash[0]["cash"] - total_cost
+                rest = user_cash - total_cost
                 db.execute("UPDATE users SET cash = :rest WHERE id = :uid",
                            rest=rest, uid=user_id)
                 if rest == 0:
@@ -107,11 +123,13 @@ def buy():
                     flash("You just milked off your account.")
                 else:
                     flash("Successful Process!")
-            return render_template("index.html")
+            return redirect("/")
 
     # If method = GET
     else:
-        return render_template("buy.html")
+        username = db.execute(
+            "SELECT username FROM users WHERE id = :uid", uid=user_id)[0]["username"]
+        return render_template("buy.html", user=username)
 
 
 """
