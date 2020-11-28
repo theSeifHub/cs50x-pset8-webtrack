@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+            <th></th>
+			<th>Symbol</th>
+			<th>Shares</th>
+			<th>Price</th>
+			<th>Transacted</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for transaction in transactions %}
+            {% if transaction["shares"] > 0 %}
+            <tr class="table-success">
+                <th scope="row">Purchase</th>
+                {% for key, value in transaction.items() %}
+			    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% elif transaction["shares"] < 0 %}
+            <tr class="table-danger">
+                <th scope="row">Sale</th>
+                {% for key, value in transaction.items() %}
+			    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endif %}
+        {% endfor %}
+	</tbody>
+</table>
+{% endblock %}

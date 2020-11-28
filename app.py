@@ -150,7 +150,17 @@ Show history of transactions
 @app.route("/history")
 @login_required
 def history():
-    return apology("TODO")
+    user_id = session.get("user_id")
+    username = db.execute(
+        "SELECT username FROM users WHERE id = :uid", uid=user_id)[0]["username"]
+
+    # Get all transactions by this user
+    transactions = db.execute(
+        "SELECT symbol, shares, unit_price, dateID FROM transactions WHERE userID = :uid ORDER BY dateID DESC", uid=user_id)
+    # Ensure user has previous transactions or else apologize
+    if len(transactions) is 0:
+        return apology(" made yet", "No transactions")
+    return render_template("history.html", user=username, transactions=transactions)
 
 
 """
