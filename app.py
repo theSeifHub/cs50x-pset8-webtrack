@@ -271,6 +271,9 @@ def register():
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
+        # Ensure username length is at max 10 chracters
+        if not len(request.form.get("username")) <= 10:
+            return apology("max 10 characters", "long username")
         # Ensure password was submitted
         elif not request.form.get("password"):
             return apology("must provide password", 403)
@@ -365,6 +368,45 @@ def sell():
         username = db.execute(
             "SELECT username FROM users WHERE id = :uid", uid=user_id)[0]["username"]
         return render_template("sell.html", user=username, symbols=symbols)
+
+
+"""
+Change Password
+============================================
+"""
+
+
+@app.route("/change_pw", methods=["GET", "POST"])
+def change_pw():
+    user_id = session.get("user_id")
+    username = db.execute(
+        "SELECT username FROM users WHERE id = :uid", uid=user_id)[0]["username"]
+
+    if request.method == "POST":
+        # Ensure current password was submitted
+        if not request.form.get("old-password"):
+            return apology("Incorrect password", 403)
+        # Ensure a new password is provided
+        elif not request.form.get("new-password"):
+            return apology("must provide password", 403)
+        # Ensure both new password entries match
+        elif not request.form.get("confirmation") or request.form.get("confirmation") != request.form.get("new-password"):
+            return apology("New passwords don't match", 403)
+        #  Ensure current password matches the db
+        old_password = db.execute(
+            "SELECT hash FROM users WHERE id = :uid", uid=user_id)[0]["hash"]
+        if not check_password_hash(old_password, request.form.get("old-password")):
+            return apology("Incorrect password", 403)
+
+        # Change password in db
+        db.execute("UPDATE users SET hash = :new_hash WHERE id = :uid",
+                   uid=user_id, new_hash=generate_password_hash(request.form.get("new-password")))
+        flash('Password changed successfully')
+        return redirect("/")
+
+    # If method = GET
+    else:
+        return render_template("change_pw.html", user=username)
 
 
 """
