@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Settings - Add Funds
+{% endblock %}
+
+{% block main %}
+    {% if funded_today %}
+    <h4><span class="text-danger">You already added funds today!</span><br>Try again tomorrow.</h4>
+    {% else %}
+    <form action="/add_funds" method="POST">
+	    <p>You can only add funds <b>once a day</b>, starting from <b>$100</b> up to <b>$1,000</b></p>
+	    <div class="form-group">
+		    <input class="form-control" type="number" name="funds" placeholder="Amount" min="100" max="1000" required autofocus />
+	    </div>
+
+	    <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    {% endif %}
+    {% if funds %}
+    <div class="mt-5">
+        <h5>Previously added funds</h5>
+        <table class="table">
+	        <thead class="thead-dark">
+		        <tr>
+                    <th>Amount added</th>
+    			    <th>Date</th>
+		        </tr>
+	        </thead>
+	        <tbody>
+	    	{% for fund in funds %}
+                <tr class="table-secondary">
+                {% for key, value in fund.items() %}
+			        <td>{{ value }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+	        </tbody>
+        </table>
+    </div>
+    {% endif %}
+{% endblock %}

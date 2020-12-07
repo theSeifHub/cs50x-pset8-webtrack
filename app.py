@@ -6,7 +6,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
-from datetime import datetime
+from datetime import datetime, date
 
 from helpers import apology, login_required, lookup, usd
 
@@ -157,6 +157,11 @@ def history():
     # Get all transactions by this user
     transactions = db.execute(
         "SELECT symbol, shares, unit_price, dateID FROM transactions WHERE userID = :uid ORDER BY dateID DESC", uid=user_id)
+    # Change date format
+    for transaction in transactions:
+        parsed_date = datetime.strptime(
+            transaction["dateID"], "%Y-%m-%d %H:%M:%S")
+        transaction["dateID"] = parsed_date.strftime("%H:%M %p on %d %b, %Y")
     # Ensure user has previous transactions or else apologize
     if len(transactions) is 0:
         return apology(" made yet", "No transactions")
@@ -379,8 +384,6 @@ Change Password
 @app.route("/change_pw", methods=["GET", "POST"])
 def change_pw():
     user_id = session.get("user_id")
-    username = db.execute(
-        "SELECT username FROM users WHERE id = :uid", uid=user_id)[0]["username"]
 
     if request.method == "POST":
         # Ensure current password was submitted
@@ -406,7 +409,66 @@ def change_pw():
 
     # If method = GET
     else:
+        username = db.execute(
+            "SELECT username FROM users WHERE id = :uid", uid=user_id
+        )[0]["username"]
         return render_template("change_pw.html", user=username)
+
+
+"""
+Add funds
+============================================
+"""
+
+
+@app.route("/add_funds", methods=["GET", "POST"])
+def add_funds():
+    user_id = session.get("user_id")
+
+    if request.method == "POST":
+        # Ensure a value is provided
+        if not request.form.get("funds"):
+            return apology("Must enter value", 403)
+
+        funds = int(request.form.get("funds"))
+        # Ensure amount is between 100 and 1000
+        if funds > 1000 or funds < 100:
+            return apology("Invalid Amount", 403)
+        # Add funds
+        else:
+            current_cash = db.execute(
+                "SELECT cash FROM users WHERE id = :uid", uid=user_id)[0]["cash"]
+            today = date.today()
+            db.execute(
+                "INSERT INTO funds (userID, cash_before, amount, dateID) VALUES (:uid, :cash_before, :amount, :dateID)",
+                uid=user_id, cash_before=current_cash, amount=funds, dateID=today
+            )
+            db.execute("UPDATE users SET cash = :new_cash WHERE id = :uid",
+                       new_cash=current_cash+funds, uid=user_id)
+            flash("Funds were added successfully!")
+            return redirect("/")
+    # If method = GET
+    else:
+        # Retrieve previous processes, if any
+        previous_funds = db.execute(
+            "SELECT amount, dateID FROM funds WHERE userID = :uid ORDER BY dateID DESC LIMIT 5", uid=user_id)
+
+        funded_today = False
+        if len(previous_funds) > 0:
+            # Check if user already added funds for the day
+            today = date.today().strftime("%Y-%m-%d")
+            if previous_funds[0]["dateID"] == today:
+                funded_today = True
+            # Change date format
+            for fund in previous_funds:
+                parsed_date = datetime.strptime(fund["dateID"], "%Y-%m-%d")
+                fund["dateID"] = parsed_date.strftime("%d %b, %Y")
+        elif len(previous_funds) == 0:
+            previous_funds = None
+        username = db.execute(
+            "SELECT username FROM users WHERE id = :uid", uid=user_id
+        )[0]["username"]
+        return render_template("add_funds.html", user=username, funded_today=funded_today, funds=previous_funds)
 
 
 """
